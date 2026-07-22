@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=77"]  # for the PEP 639 license fields
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "genai-cpu-util"
+version = "0.1.0"
+description = "Measure CPU utilisation while a Neat GenAIServer serves one or more models"
+readme = "README.md"
+requires-python = ">=3.9"
+license = "Apache-2.0"  # as llima and neat
+license-files = ["LICENSE"]
+keywords = ["sima", "modalix", "genai", "benchmark", "cpu"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: POSIX :: Linux",
+    "Topic :: System :: Benchmark",
+]
+# pyneat is not listed: it ships with the DevKit image and is imported lazily,
+# so the package still installs and --help works anywhere else
+dependencies = ["matplotlib>=3.5", "numpy>=1.21"]
+
+[project.scripts]
+genai-cpu-benchmark = "genai_cpu_util.benchmark:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
