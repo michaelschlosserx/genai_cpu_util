@@ -19,6 +19,7 @@ prompts per model:
 On the DevKit, install into the venv that already has `pyneat`.
 
 ```bash
+source ~/pyneat/bin/activate
 pip install -e .
 ```
 
