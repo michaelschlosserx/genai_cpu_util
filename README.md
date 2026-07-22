@@ -1,7 +1,7 @@
 # genai-cpu-util
 
 Measures CPU usage on a SiMa Modalix DevKit while a Neat `GenAIServer` serves
-several models at once, then prompted **in parallel**, one request thread per model so every model has a request in flight at the same time. Split into initialization, inference and peak. Any number of models works, in any mix of VLM and LLM.
+several models at once, then prompted **in parallel**, one request thread per model so every model has a request in flight at the same time. Works for both LLMs and VLMs.
 
 ## Example
 
@@ -27,10 +27,10 @@ pip install -e .
 ```bash
 M=/media/nvme/llima/models
 
-# two models in one server, prompted at the same time
+# two models prompted simultaneously
 genai-cpu-benchmark $M/Qwen2.5-VL-7B-Instruct-GPTQ-a16w4 $M/Qwen3-4B-Instruct-2507-GPTQ-a16w4
 
-# three reloads, twenty prompts each -- the useful shape
+# three reloads, twenty prompts each
 genai-cpu-benchmark $M/Qwen2.5-VL-7B-Instruct-GPTQ-a16w4 $M/Qwen3-4B-Instruct-2507-GPTQ-a16w4 \
     --repeat 3 --prompts 20 --name benchmark-name
 ```
@@ -43,9 +43,6 @@ otherwise, and the charts are written into it when the run finishes.
 `genai-cpu-benchmark --help` lists everything else
 
 ## Output
-
-Everything lands under `reports/<name>/`, where `<name>` is `--name` or a
-timestamp. An absolute `--name` is used as given instead.
 
 ```
 reports/20260721-151403/
