@@ -55,11 +55,10 @@ reports/20260721-151403/
 ## How it works
 
 `sampler.py` samples `/proc/stat` in a separate process while `benchmark.py`
-drives the server and stamps a phase boundary at every step — idle baseline,
+drives the server and stamps a phase boundary at every step: idle baseline,
 per-model load, warmup, loaded idle, inference, shutdown. `charts.py` slices the
 samples by phase into `timeline.png` (CPU over the run, phases banded, peaks
-marked) and `cores.png` (per-core heatmap, showing whether load is spread or
-stuck on one core).
+marked) and `cores.png` (per-core heatmap).
 
 ## Models used for the reference measurements
 
